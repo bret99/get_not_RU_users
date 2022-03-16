@@ -1,6 +1,8 @@
 This is an AbuseIPDB & Shodan API's based scripts to get organization users not from corporate OpenVPN server country.
 Prerequisites:
+
 1.pip3 install shodan;
+
 2.get Shodan [free] API key.
 
 One should substitute "/PATH_TO_OPENVPN_LOG_FILE" in lines 9 and 44, "YOUR_ABUSEIPDB_API_KEY" in line 29 for actual ones in get_targetted_users.py.
