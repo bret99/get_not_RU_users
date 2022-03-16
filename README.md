@@ -3,7 +3,9 @@ Prerequisites:
 
 1.pip3 install shodan;
 
-2.get Shodan [free] API key.
+2.get Shodan [free] API key;
+
+3.get AbuseIPDB [free] API key.
 
 One should substitute "/PATH_TO_OPENVPN_LOG_FILE" in lines 9 and 44, "YOUR_ABUSEIPDB_API_KEY" in line 29 for actual ones in get_targetted_users.py.
 One should substitute "/PATH_TO_OPENVPN_LOG_FILE" in lines 9 and 44, "YOUR_ABUSEIPDB_API_KEY" in line 29, YOUR_SHODAN_API_KEY in line 8 for actual ones in get_targetted_users_enhanced.py.
