@@ -33,7 +33,7 @@ def get_IP_info(ip):
                                 params=querystring)
 
     decodedResponse = json.loads(response.text)
-    if decodedResponse['data']['countryCode'] != 'RU':
+    if decodedResponse['data']['countryCode'] != 'US':
         print("\033[1;91m")
         print(
             json.dumps(decodedResponse['data']['ipAddress'],
