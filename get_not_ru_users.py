@@ -6,11 +6,11 @@ conns_list = []
 IPs_list = []
 
 os.system(
-    "cat /PATH_TO_OPENVPN_LOG_FILE | awk '{print $1}' | head -n -3 | tail -n +4 | sed 's/ROUTING//;s/Virtual//' | sed '/^$/d' > /tmp/not_ru_users.txt"
+    "cat /PATH_TO_OPENVPN_LOG_FILE | awk '{print $1}' | head -n -3 | tail -n +4 | sed 's/ROUTING//;s/Virtual//' | sed '/^$/d' > /tmp/target_users.txt"
 )
 
 print("\033[1;90mSearching...\033[1;00m")
-with open('/tmp/not_ru_users.txt') as conns:
+with open('/tmp/target_users.txt') as conns:
     for line in conns.readlines():
         conns_list.append(line.split(','))
 
@@ -39,15 +39,14 @@ def get_IP_info(ip):
             json.dumps(decodedResponse['data']['ipAddress'],
                        sort_keys=True,
                        indent=4), "\033[1;00m")
-        not_ru_IP = decodedResponse['data']['ipAddress']
+        target_IP = decodedResponse['data']['ipAddress']
         os.system(
-            "grep {} /PATH_TO_OPENVPN_LOG_FILE | head -n 1".format(not_ru_IP))
+            "grep {} /PATH_TO_OPENVPN_LOG_FILE | head -n 1".format(target_IP))
         print("\033[1;94mIP info: \033[1;00m")
         print(json.dumps(decodedResponse['data'], sort_keys=True, indent=4))
-        print("")
 
 
 for line in IPs_list:
     get_IP_info(line)
 
-os.system('rm /tmp/not_ru_users.txt')
+os.system('rm /tmp/target_users.txt')
