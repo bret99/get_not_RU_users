@@ -7,11 +7,11 @@ IPs_list = []
 
 os.system("shodan init YOUR_SHODAN_API_KEY")
 os.system(
-    "cat /PATH_TO_OPENVPN_LOG_FILE | awk '{print $1}' | head -n -3 | tail -n +4 | sed 's/ROUTING//;s/Virtual//' | sed '/^$/d' > /tmp/not_ru_users.txt"
+    "cat /PATH_TO_OPENVPN_LOG_FILE | awk '{print $1}' | head -n -3 | tail -n +4 | sed 's/ROUTING//;s/Virtual//' | sed '/^$/d' > /tmp/targetted_users.txt"
 )
 
 print("\033[1;90mSearching...\033[1;00m")
-with open('/tmp/not_ru_users.txt') as conns:
+with open('/tmp/targetted_users.txt') as conns:
     for line in conns.readlines():
         conns_list.append(line.split(','))
 
@@ -52,5 +52,5 @@ def get_IP_info(ip):
 for line in IPs_list:
     get_IP_info(line)
 
-os.system('rm /tmp/not_ru_users.txt')
+os.system('rm /tmp/targetted_users.txt')
 
